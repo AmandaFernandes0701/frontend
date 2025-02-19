@@ -3,13 +3,13 @@ import Home from "../pages/Home/Home";
 import ChatPage from "../pages/ChatPage/ChatPage";
 import PropTypes from "prop-types";
 
-const AppRoutes = ({ setTherapyMethod }) => {
+const AppRoutes = ({ therapyMethod, setTherapyMethod }) => {
   return (
     <Routes>
       <Route path="/" element={<Home setTherapyMethod={setTherapyMethod} />} />
       <Route
         path="/chat"
-        element={<ChatPage therapyMethod={setTherapyMethod} />}
+        element={<ChatPage therapyMethod={therapyMethod} />}
       />
     </Routes>
   );
@@ -17,6 +17,7 @@ const AppRoutes = ({ setTherapyMethod }) => {
 
 AppRoutes.propTypes = {
   setTherapyMethod: PropTypes.func.isRequired,
+  therapyMethod: PropTypes.string.isRequired,
 };
 
 export default AppRoutes;

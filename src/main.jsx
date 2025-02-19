@@ -6,12 +6,22 @@ import { GlobalStyle } from "./styles/globalStyles";
 import AppRoutes from "./routes/Routes";
 
 const App = () => {
-  const [, setTherapyMethod] = useState("");
+  const [therapyMethod, setTherapyMethod] = useState(() => {
+    return localStorage.getItem("therapyMethod") || "";
+  });
+
+  const handleTherapyMethod = (method) => {
+    localStorage.setItem("therapyMethod", method);
+    setTherapyMethod(method);
+  };
 
   return (
     <Router>
       <GlobalStyle />
-      <AppRoutes setTherapyMethod={setTherapyMethod} />
+      <AppRoutes
+        therapyMethod={therapyMethod}
+        setTherapyMethod={handleTherapyMethod}
+      />
     </Router>
   );
 };
