@@ -1,10 +1,24 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { GlobalStyle } from "./styles/globalStyles";
+import AppRoutes from "./routes/Routes";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const App = () => {
+  const [, setTherapyMethod] = useState("");
+
+  return (
+    <Router>
+      <GlobalStyle />
+      <AppRoutes setTherapyMethod={setTherapyMethod} />
+    </Router>
+  );
+};
+
+export default App;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
